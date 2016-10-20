@@ -2,6 +2,7 @@
 const React = require('react')
 const chroma = require('chroma-js')
 const Main = require('./Main')
+const Matrix = require('./Matrix')
 const Footer = require('./Footer')
 const rebassConfig = require('./rebass-config')
 
@@ -66,21 +67,27 @@ class App extends React.Component {
     const { h, s, l } = this.state
 
     const hex = toHex([ h, s, l ])
+    const dark = isDark(hex)
+
+    const css = `::selection{background-color:${dark ? '#000' : '#fff'}}`
+
     const sx = {
       root: {
-        color: isDark(hex) ? '#fff' : '#000',
+        color: dark ? '#fff' : '#000',
         backgroundColor: hex
       }
     }
 
     return (
       <div style={sx.root}>
+        <style dangerouslySetInnerHTML={{ __html: css }} />
         <Main
           {...this.state}
           value={hex}
           onChange={this.handleChange}
           onHexChange={this.handleHexChange}
         />
+        <Matrix {...this.state} />
         <Footer />
       </div>
     )
