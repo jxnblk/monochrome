@@ -1,8 +1,9 @@
 
 const React = require('react')
 const chroma = require('chroma-js')
+const throttle = require('lodash/throttle')
 const Main = require('./Main')
-const Matrix = require('./Matrix')
+const Luminances = require('./Luminances')
 const Footer = require('./Footer')
 const rebassConfig = require('./rebass-config')
 
@@ -21,7 +22,7 @@ class App extends React.Component {
     }
     this.handleHexChange = this.handleHexChange.bind(this)
     this.handleChange = this.handleChange.bind(this)
-    this.updateUrl = this.updateUrl.bind(this)
+    this.updateUrl = throttle(this.updateUrl.bind(this), 500)
   }
 
   getChildContext () {
@@ -74,7 +75,8 @@ class App extends React.Component {
     const sx = {
       root: {
         color: dark ? '#fff' : '#000',
-        backgroundColor: hex
+        backgroundColor: hex,
+        transition: 'color .4s ease-out'
       }
     }
 
@@ -87,7 +89,7 @@ class App extends React.Component {
           onChange={this.handleChange}
           onHexChange={this.handleHexChange}
         />
-        <Matrix {...this.state} />
+        <Luminances {...this.state} />
         <Footer />
       </div>
     )

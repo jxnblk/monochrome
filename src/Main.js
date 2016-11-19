@@ -1,9 +1,10 @@
 
 const React = require('react')
-const { Flex, Box } = require('reflexbox')
+const { Flex, Box, Heading } = require('axs')
 const round = require('lodash.round')
 const Input = require('./Input')
 const HslSliders = require('./HslSliders')
+const Tweet = require('./Tweet')
 const { toRgb } = require('./utils')
 
 const Main = (props) => {
@@ -16,15 +17,14 @@ const Main = (props) => {
     onHexChange,
   } = props
 
-  const sx = {
+  const cx = {
     root: {
       padding: 48,
+      flexDirection: 'column',
       minHeight: '100vh'
     },
-    heading: {
-      fontSize: 20,
-      margin: 0,
-      marginBottom: 32
+    space: {
+      flex: '1 1 auto'
     },
     pre: {
       fontSize: 14
@@ -34,10 +34,14 @@ const Main = (props) => {
   const rgb = toRgb([ h, s, l])
 
   return (
-    <Flex
-      column
-      style={sx.root}>
-      <h1 style={sx.heading}>monochrome</h1>
+    <Flex css={cx.root}>
+      <Flex>
+        <Heading size={3} m0 mb3>
+          monochrome
+        </Heading>
+        <Box css={cx.space} />
+        <Tweet />
+      </Flex>
       <Input
         name='color'
         mt={4}
@@ -45,13 +49,13 @@ const Main = (props) => {
         value={hex}
         onChange={e => onHexChange(e.target.value)}
       />
-      <pre className='mono' style={sx.pre}>
+      <Box is='pre' className='mono' css={cx.pre}>
         rgb({rgb.join(', ')})
-      </pre>
-      <pre className='mono' style={sx.pre}>
+      </Box>
+      <Box is='pre' className='mono' css={cx.pre}>
         hsl({round(h)}, {round(s, 2)}, {round(l, 2)})
-      </pre>
-      <Box auto />
+      </Box>
+      <Box css={cx.space} />
       <HslSliders {...props} />
     </Flex>
   )

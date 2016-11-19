@@ -7,6 +7,7 @@ require('babel-register')({
 const zlib = require('zlib')
 const { createElement } = require('react')
 const { renderToString, renderToStaticMarkup } = require('react-dom/server')
+const { cxs } = require('axs')
 const Html = require('./src/Html')
 const App = require('./src/App')
 const robots = require('./robots')
@@ -34,9 +35,13 @@ module.exports = (req, res) => {
     })
   )
 
+  const css = cxs.css
+  cxs.reset()
+
   const html = renderToStaticMarkup(
     createElement(Html, {
       color: color || '007ce0',
+      css,
       app
     })
   )

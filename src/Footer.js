@@ -1,8 +1,9 @@
 
 const React = require('react')
+const { Box } = require('axs')
 
 const Footer = () => {
-  const sx = {
+  const cx = {
     root: {
       fontSize: 14,
       padding: 48
@@ -10,9 +11,9 @@ const Footer = () => {
   }
 
   return (
-    <footer style={sx.root}>
+    <Box is='footer' css={cx.root}>
       <a href='http://jxnblk.com'>Made by Jxnblk</a>
-    </footer>
+    </Box>
   )
 }
 

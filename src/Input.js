@@ -1,22 +1,37 @@
 
 const React = require('react')
-const { withRebass } = require('rebass')
+const { Box } = require('axs')
 
 const Input = ({
   name,
   value,
   onChange
-}) => {
-  return (
-    <input
-      type='text'
-      name={name}
-      value={value}
-      onChange={onChange}
-      className='Input h0 mono'
-    />
-  )
+}) => (
+  <Box
+    is='input'
+    type='text'
+    name={name}
+    value={value}
+    onChange={onChange}
+    className='xInput h0 mono'
+    css={cx}
+  />
+)
+
+const cx = {
+  fontFamily: 'inherit',
+  display: 'block',
+  width: '100%',
+  maxWidth: '100%',
+  border: 0,
+  padding: 0,
+  color: 'inherit',
+  backgroundColor: 'transparent',
+  WebkitAppearance: 'none',
+  MozAppearance: 'none',
+  appearance: 'none',
+  outline: 'none'
 }
 
-module.exports = withRebass(Input)
+module.exports = Input
 
