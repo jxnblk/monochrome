@@ -10,12 +10,15 @@ const { renderToString, renderToStaticMarkup } = require('react-dom/server')
 const { cxs } = require('axs')
 const Html = require('./src/Html')
 const App = require('./src/App')
-const robots = require('./robots')
-const image = require('./image')
-const bundle = require('./bundle')
+const robots = require('./src/robots')
+const image = require('./src/image')
+const bundle = require('./src/bundle')
+
+const json = require('./src/json')
+const cssResponse = require('./src/css-response')
 
 module.exports = (req, res) => {
-  const [, color ] = req.url.split('/')
+  const [, color ] = req.url.split(/[\/\.]/)
 
   if (req.url === '/robots.txt') {
     return res.end(robots)
@@ -27,6 +30,14 @@ module.exports = (req, res) => {
 
   if (req.url === '/bundle.js') {
     return bundle(res)
+  }
+
+  if (/\.json$/.test(req.url)) {
+    return json({ res, color })
+  }
+
+  if (/\.css/.test(req.url)) {
+    return cssResponse({ res, color })
   }
 
   const app = renderToString(

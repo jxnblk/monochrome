@@ -2,7 +2,9 @@
 const React = require('react')
 const { Box } = require('axs')
 
-const Footer = () => {
+const Footer = ({
+  color
+}) => {
   const cx = {
     root: {
       fontSize: 14,
@@ -12,7 +14,17 @@ const Footer = () => {
 
   return (
     <Box is='footer' css={cx.root}>
-      <a href='http://jxnblk.com'>Made by Jxnblk</a>
+      <ul>
+        <li>
+          <a href={`/${color}.json`}>JSON</a>
+        </li>
+        <li>
+          <a href={`/${color}.css`}>CSS</a>
+        </li>
+        <li>
+          <a href='http://jxnblk.com'>Made by Jxnblk</a>
+        </li>
+      </ul>
     </Box>
   )
 }

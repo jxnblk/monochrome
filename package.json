@@ -1,5 +1,6 @@
 {
   "name": "monochrome",
+  "private": true,
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -21,6 +22,7 @@
     "babel-preset-react": "^6.16.0",
     "babel-register": "^6.16.3",
     "chroma-js": "^1.2.1",
+    "hue-name": "^1.0.0-b0",
     "json-loader": "^0.5.4",
     "lodash": "^4.17.2",
     "lodash.round": "^4.0.4",

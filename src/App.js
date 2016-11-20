@@ -6,6 +6,7 @@ const Main = require('./Main')
 const Luminances = require('./Luminances')
 const Footer = require('./Footer')
 const rebassConfig = require('./rebass-config')
+const createPalette = require('./palette')
 
 const { toHex, toHsl, isDark } = require('./utils')
 
@@ -70,6 +71,8 @@ class App extends React.Component {
     const hex = toHex([ h, s, l ])
     const dark = isDark(hex)
 
+    const palette = createPalette({ h, s, l })
+
     const css = `::selection{background-color:${dark ? '#000' : '#fff'}}`
 
     const sx = {
@@ -89,8 +92,11 @@ class App extends React.Component {
           onChange={this.handleChange}
           onHexChange={this.handleHexChange}
         />
-        <Luminances {...this.state} />
-        <Footer />
+        <Luminances
+          {...this.state}
+          palette={palette}
+        />
+        <Footer color={hex.replace(/^#/, '')} />
       </div>
     )
   }

@@ -1,6 +1,6 @@
 
 const React = require('react')
-const basecss = require('../css')
+const basecss = require('./css')
 const twitterCard = require('./twitter-card')
 
 const Html = ({
