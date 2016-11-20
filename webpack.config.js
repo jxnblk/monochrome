@@ -18,6 +18,11 @@ module.exports = {
         loader: 'babel'
       },
       {
+        test: /\.js$/,
+        inclue: /hue-name/,
+        loader: 'babel'
+      },
+      {
         test: /\.json$/,
         loader: 'json'
       }
