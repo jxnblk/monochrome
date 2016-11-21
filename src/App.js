@@ -94,7 +94,7 @@ class App extends React.Component {
         />
         <Luminances
           {...this.state}
-          palette={palette}
+          steps={palette.shades}
         />
         <Footer color={hex.replace(/^#/, '')} />
       </div>

@@ -3,7 +3,7 @@ const React = require('react')
 const { Flex, Box } = require('axs')
 const Chip = require('./Chip')
 
-const Luminances = ({ h, s, l, palette }) => {
+const Luminances = ({ h, s, l, steps = [] }) => {
   const cx = {
     root: {
       padding: 48
@@ -17,7 +17,7 @@ const Luminances = ({ h, s, l, palette }) => {
     <Box css={cx.root}>
       <Flex mx={-1}
         css={cx.flex}>
-        {palette.shades.map(hex => (
+        {steps.map(hex => (
           <Chip key={hex} color={hex} />
         ))}
       </Flex>
