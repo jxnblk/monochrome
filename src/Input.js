@@ -14,6 +14,10 @@ const Input = ({
     value={value}
     onChange={onChange}
     className='xInput h0 mono'
+    autoComplete='off'
+    autoCorrect='off'
+    autoCapitalize='off'
+    spellCheck='false'
     css={cx}
   />
 )
