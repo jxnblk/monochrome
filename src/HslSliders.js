@@ -1,10 +1,11 @@
 
 const React = require('react')
 const round = require('lodash.round')
-const { Flex, Box, withBox } = require('axs')
+const { Box, withAxs } = require('axs')
+const { Flex } = require('axs-ui')
 const Rebass = require('rebass')
 
-const Slider = withBox(Rebass.Slider)
+const Slider = withAxs(Rebass.Slider)
 
 const HslSliders = ({
   h, s, l,

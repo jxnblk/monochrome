@@ -1,6 +1,6 @@
 
 const React = require('react')
-const { Flex, Box } = require('axs')
+const { Flex, Box } = require('axs-ui')
 const Chip = require('./Chip')
 
 const Luminances = ({ h, s, l, steps = [] }) => {

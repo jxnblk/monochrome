@@ -1,6 +1,7 @@
 
 const React = require('react')
-const { Flex, Box, Heading } = require('axs')
+const { Box } = require('axs')
+const { Flex, Heading } = require('axs-ui')
 const round = require('lodash.round')
 const Input = require('./Input')
 const HslSliders = require('./HslSliders')
